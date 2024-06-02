@@ -27,14 +27,18 @@ class _HomePageDinasState extends State<HomePageDinas> {
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    TextButton(
-                      onPressed: () {
-                        Navigator.of(context).pushNamed('/gaje');
-                      },
-                      child: Icon(Icons.menu, color: Colors.black, size: 50.0),
-                    ),
+                    SizedBox(
+                    width: 20,
+                    // height: 20,
+                  ),
+                    // TextButton(
+                    //   onPressed: () {
+                    //     Navigator.of(context).pushNamed('/login');
+                    //   },
+                    //   child: Icon(Icons.logout, color: Colors.black, size: 40.0),
+                    // ),
                     Image.asset("assets/image/man.png", width: 50.0)
                   ],
                 ),
@@ -80,13 +84,13 @@ class _HomePageDinasState extends State<HomePageDinas> {
                         title: "Pompa",
                         subtitle: "Aktifkan",
                         routeName: '/cekstatus',
-                      ),
-                      buildMenuButton(
-                        context,
-                        iconPath: "assets/image/megaphone.png",
-                        title: "Notifikasi",
-                        subtitle: "Info",
-                        routeName: '/notif',
+                        // ),
+                        // buildMenuButton(
+                        //   context,
+                        //   iconPath: "assets/image/megaphone.png",
+                        //   title: "Notifikasi",
+                        //   subtitle: "Info",
+                        //   routeName: '/notif',
                       ),
                     ],
                   ),
@@ -178,8 +182,8 @@ class _HomePageDinasState extends State<HomePageDinas> {
         ),
       ),
       child: SizedBox(
-        width: 160.0,
-        height: 160.0,
+        width: 363.0,
+        height: 232.0,
         child: Card(
           color: Color(0xFF33AAAA),
           elevation: 2.0,

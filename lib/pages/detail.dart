@@ -135,7 +135,7 @@ class _DetailStatusState extends State<DetailStatus> {
       if (pesan == "aktifkan") {
         var topic = 'nops/esp32/sub';
 
-        final Map<String, dynamic> messagePayload = {"pesan": "aktifkan pompa"};
+        final Map<String, dynamic> messagePayload = {"pesan": "1"};
         final String message = jsonEncode(messagePayload);
         final builder = MqttClientPayloadBuilder();
         builder.addString(message);
@@ -144,7 +144,7 @@ class _DetailStatusState extends State<DetailStatus> {
       } else if (pesan == "matikan") {
         var topic = 'nops/esp32/sub';
 
-        final Map<String, dynamic> messagePayload = {"pesan": "matikan pompa"};
+        final Map<String, dynamic> messagePayload = {"pesan": "0"};
         final String message = jsonEncode(messagePayload);
         final builder = MqttClientPayloadBuilder();
         builder.addString(message);
@@ -331,9 +331,7 @@ class _DetailStatusState extends State<DetailStatus> {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: isPumpActive
-                        ? Color.fromARGB(255, 151, 42, 34)
-                        : Color.fromARGB(255, 44, 155, 48),
+                    backgroundColor: isPumpActive ? Colors.red : Colors.green,
                     padding: EdgeInsets.symmetric(vertical: 15),
                     textStyle: TextStyle(fontSize: 20),
                   ),

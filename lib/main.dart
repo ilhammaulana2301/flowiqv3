@@ -9,7 +9,7 @@ import 'package:aplikasibaru/pages/loading.dart';
 import 'package:aplikasibaru/pages/loginPage.dart';
 import 'package:aplikasibaru/pages/mapPageinteractive.dart';
 import 'package:aplikasibaru/pages/mapinteractivePointPage.dart';
-import 'package:aplikasibaru/pages/notifPage.dart';
+//import 'package:aplikasibaru/pages/notifPage.dart';
 import 'package:aplikasibaru/pages/tambahSensor.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -39,11 +39,11 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/loading',
       routes: {
-        '/loading': (context) => LoadingScreen(navigateTo: '/'),
+        '/loading': (context) => LoadingScreen(navigateTo: '/home'),
         '/': (context) => DaftarPageDinas(),
         '/login': (context) => LoginPageDinasUpdate(),
         '/home': (context) => HomePageDinas(),
-        '/notif': (context) => NotifPageDinas(),
+        //'/notif': (context) => NotifPageDinas(),
         '/tambahsensor': (context) => TambahSensorPageDinas(),
         '/grafik': (context) => DataFetch(),
         '/zona': (context) => MapInteractive(),

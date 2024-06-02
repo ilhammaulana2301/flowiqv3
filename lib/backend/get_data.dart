@@ -10,18 +10,6 @@ class DataFetch extends StatefulWidget {
 }
 
 class _DataFetchState extends State<DataFetch> {
-  final List<double> waterLevel = [];
-  final List<double> dataTime = [];
-  double currentTime = 0.0;
-
-  var data = [];
-  @override
-  void initState() {
-    // TODO: implement initState
-    getDataKetinggianAir();
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,15 +38,15 @@ class _DataFetchState extends State<DataFetch> {
           Container(
             child: FutureBuilder(
               future: getDataKetinggianAir(),
-              builder: (context, snapshot) {
+              builder: (context, AsyncSnapshot<List<Map<String, dynamic>>> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return CircularProgressIndicator();
                 } else if (snapshot.hasError) {
                   return Text('Error: ${snapshot.error}');
                 } else {
-                  var data = snapshot.data as List<Map<String, dynamic>>;
+                  List<Map<String, dynamic>> data = snapshot.data!;
                   List<FlSpot> spots = data.asMap().entries.map((entry) {
-                    int index = int.parse(entry.value["timestamp"]);
+                    int index = entry.key;
                     double distance = entry.value["distance"];
                     return FlSpot(index.toDouble(), distance);
                   }).toList();
@@ -86,13 +74,12 @@ class _DataFetchState extends State<DataFetch> {
                           ),
                           borderData: FlBorderData(
                             show: true,
-                            border:
-                                Border.all(color: Color(0xff37434d), width: 1),
+                            border: Border.all(color: Color(0xff37434d), width: 1),
                           ),
                           minX: 0,
-                          maxX: data.length.toDouble(),
+                          maxX: data.length.toDouble() - 1, // Adjusted maxX
                           minY: 0,
-                          maxY: 3000,
+                          maxY: 100,
                           lineBarsData: [
                             LineChartBarData(
                               spots: spots,
